@@ -28,21 +28,15 @@ def main():
     if media_choice == "YouTube":
         url = st.text_input("Enter the video url")
         resolution = st.selectbox("Choose Resolution", ["144p", "240p", "360p", "480p", "720p", "1080p"])
-        path = st.text_input("Enter the output path for downloaded videos", key="youtube_path")
-        if not os.path.exists(path) :
-            os.makedirs(path)
-        
+        downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
         if st.button("Download YouTube Video"):
-            youtube_video_download(url, resolution, path)
+            youtube_video_download(url, resolution, downloads_path)
 
     elif media_choice == "Instagram":
         url = st.text_input("Enter the Instagram reel's URL")
-        path = st.text_input("Enter the output path for downloaded videos", key="instagram_path")
-        if not os.path.exists(path) :
-            os.makedirs(path)
-        
+        downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
         if st.button("Download Instagram Video"):
-            instagram_video_download(url, path)
+            instagram_video_download(url, downloads_path)
 
 if __name__ == "__main__":
     main()
